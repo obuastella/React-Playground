@@ -13,9 +13,22 @@ const CustomWebcam = () => {
     const imageSrc = webcamRef.current.getScreenshot();
     setImgSrc(imageSrc);
   }, [webcamRef]);
+
+  // button to retake image
+  const retake = () => {
+    setImgSrc(null);
+  };
   return (
+    // Finally, add a button to the component that will trigger the capture function when it is clicked and then display the captured image conditionally.
     <div className="container">
-      <Webcam height={600} width={600} ref={webcamRef} />
+      {imgSrc ? (
+        <img src={imgSrc} alt="webcam" />
+      ) : (
+        <Webcam height={600} width={600} ref={webcamRef} />
+      )}
+      <div className="btn-container">
+        <button onClick={capture}>Capture photo</button>
+      </div>
     </div>
   );
 };
