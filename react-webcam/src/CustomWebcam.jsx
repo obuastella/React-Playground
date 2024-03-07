@@ -26,7 +26,14 @@ const CustomWebcam = () => {
       {imgSrc ? (
         <img src={imgSrc} alt="webcam" />
       ) : (
-        <Webcam height={600} width={600} ref={webcamRef} mirrored={mirrored} />
+        <Webcam
+          height={600}
+          width={600}
+          ref={webcamRef}
+          mirrored={mirrored}
+          screenshotFormat="image/jpeg"
+          screenshotQuality={0.8}
+        />
       )}
       <div className="controls">
         <div>
