@@ -18,14 +18,26 @@ const CustomWebcam = () => {
   const retake = () => {
     setImgSrc(null);
   };
+  // mirror
+  const [mirrored, setMirrored] = useState(false);
   return (
     // Finally, add a button to the component that will trigger the capture function when it is clicked and then display the captured image conditionally.
     <div className="container">
       {imgSrc ? (
         <img src={imgSrc} alt="webcam" />
       ) : (
-        <Webcam height={600} width={600} ref={webcamRef} />
+        <Webcam height={600} width={600} ref={webcamRef} mirrored={mirrored} />
       )}
+      <div className="controls">
+        <div>
+          <input
+            type="checkbox"
+            checked={mirrored}
+            onChange={(e) => setMirrored(e.target.checked)}
+          />
+          <label>Mirror</label>
+        </div>
+      </div>
       <div className="btn-container">
         {imgSrc ? (
           <button onClick={retake}>Retake photo</button>
